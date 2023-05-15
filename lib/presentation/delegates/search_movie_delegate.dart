@@ -9,12 +9,12 @@ typedef SearchMoviesCallback = Future<List<Movie>> Function(String query);
 
 class SearchMovieDelegate extends SearchDelegate<Movie?> {
   final SearchMoviesCallback searchMovies;
-  final List<Movie> initialMovies;
+  List<Movie> initialMovies;
   StreamController<List<Movie>> debouncedMovies = StreamController.broadcast();
   Timer? _debounceTimer;
 
-  SearchMovieDelegate(
-      {required this.searchMovies, required this.initialMovies});
+  SearchMovieDelegate({required this.searchMovies, required this.initialMovies})
+      : super(searchFieldLabel: 'Buscar películas');
 
   void clearStreams() {
     debouncedMovies.close();
@@ -30,12 +30,17 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
       //   return;
       // }
       final movies = await searchMovies(query);
+      initialMovies = movies;
       debouncedMovies.add(movies);
     });
   }
 
-  @override
-  String get searchFieldLabel => 'Buscar película';
+  // Widget buildResultsAndSuggestions() {
+
+  // }
+
+  // @override
+  // String get searchFieldLabel => 'Buscar película';
 
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -65,7 +70,23 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
 
   @override
   Widget buildResults(BuildContext context) {
-    return const Text('buildResults');
+    _onQueryChanged(query);
+    return StreamBuilder(
+      initialData: initialMovies,
+      stream: debouncedMovies.stream,
+      builder: (context, snapshot) {
+        final movies = snapshot.data ?? [];
+        return ListView.builder(
+            itemCount: movies.length,
+            itemBuilder: (context, index) => _MovieItem(
+                  movie: movies[index],
+                  onMovieSelected: (context, movie) {
+                    clearStreams();
+                    close(context, movie);
+                  },
+                ));
+      },
+    );
   }
 
   @override
