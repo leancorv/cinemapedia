@@ -21,7 +21,7 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
   }
 
   void _onQueryChanged(String query) {
-    print('Query string cambió');
+    // print('Query string cambió');
     if (_debounceTimer?.isActive ?? false) _debounceTimer!.cancel();
 
     _debounceTimer = Timer(const Duration(milliseconds: 500), () async {
@@ -74,6 +74,7 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
 
     return StreamBuilder(
       // future: searchMovies(query),
+      initialData: initialMovies,
       stream: debouncedMovies.stream,
       builder: (context, snapshot) {
         //!print('Realizando petición');
