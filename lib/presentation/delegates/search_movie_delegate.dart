@@ -65,9 +65,10 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
   List<Widget>? buildActions(BuildContext context) {
     return [
       StreamBuilder(
+        initialData: false,
         stream: isLoadingStream.stream,
         builder: (context, snapshot) {
-          if (snapshot.data == true) {
+          if (snapshot.data ?? false) {
             return SpinPerfect(
               duration: const Duration(seconds: 20),
               spins: 10,
@@ -88,24 +89,6 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
           );
         },
       ),
-      // if (query.isNotEmpty)
-      // SpinPerfect(
-      //   duration: const Duration(seconds: 20),
-      //   spins: 10,
-      //   infinite: true,
-      //   child: IconButton(
-      //     onPressed: () => query = '',
-      //     icon: const Icon(Icons.refresh_rounded),
-      //   ),
-      // ),
-      // FadeIn(
-      //   animate: query.isNotEmpty,
-      //   // duration: const Duration(milliseconds: 200),
-      //   child: IconButton(
-      //     onPressed: () => query = '',
-      //     icon: const Icon(Icons.clear),
-      //   ),
-      // ),
     ];
   }
 
@@ -145,7 +128,7 @@ class _MovieItem extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        onMovieSelected(context, null);
+        onMovieSelected(context, movie);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
