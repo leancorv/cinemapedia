@@ -189,7 +189,7 @@ class _CustomSliverAppBar extends StatelessWidget {
           onPressed: () {
             // TODO: Realizar el toggle
           },
-          icon: Icon(Icons.favorite_border),
+          icon: const Icon(Icons.favorite_border),
           // icon: const Icon(Icons.favorite_rounded, color: Colors.red),
         )
       ],
