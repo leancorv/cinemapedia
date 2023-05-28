@@ -33,14 +33,17 @@ class ActorsByMovie extends ConsumerWidget {
                 // Actor Photo
                 FadeInRight(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image.network(
-                      actor.profilePath,
-                      height: 180,
-                      width: 135,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                      borderRadius: BorderRadius.circular(20),
+                      child: FadeInImage(
+                        height: 180,
+                        width: 135,
+                        fit: BoxFit.cover,
+                        placeholder:
+                            const AssetImage('assets/loaders/mix-logo.png'),
+                        image: NetworkImage(
+                          actor.profilePath,
+                        ),
+                      )),
                 ),
 
                 // Nombre
