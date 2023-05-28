@@ -60,40 +60,57 @@ class _MovieDetails extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  movie.posterPath,
-                  width: size.width * 0.3,
-                ),
-              ),
-              const SizedBox(width: 10),
-
-              // Descripción
-              SizedBox(
-                width: (size.width - 40) * 0.7,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(movie.title, style: textStyles.titleLarge),
-                    Text(movie.overview)
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+        _TitleAndOverview(movie: movie, size: size, textStyles: textStyles),
 
         // Géneros de la película
         _Genres(movie: movie),
 
         ActorsByMovie(movieId: movie.id.toString()),
       ],
+    );
+  }
+}
+
+class _TitleAndOverview extends StatelessWidget {
+  const _TitleAndOverview({
+    required this.movie,
+    required this.size,
+    required this.textStyles,
+  });
+
+  final Movie movie;
+  final Size size;
+  final TextTheme textStyles;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.network(
+              movie.posterPath,
+              width: size.width * 0.3,
+            ),
+          ),
+          const SizedBox(width: 10),
+
+          // Descripción
+          SizedBox(
+            width: (size.width - 40) * 0.7,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(movie.title, style: textStyles.titleLarge),
+                Text(movie.overview)
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
