@@ -2,6 +2,7 @@ import 'package:cinemapedia/domain/entities/entities.dart';
 import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 final FutureProviderFamily<List<Video>, int> videosFromMovieProvider =
     FutureProvider.family((ref, int movieId) {
@@ -18,21 +19,98 @@ class VideosFromMovie extends ConsumerWidget {
     final moviesFromVideo = ref.watch(videosFromMovieProvider(movieId));
 
     return moviesFromVideo.when(
-        data: (videos) => Container(
-              color: Colors.red,
-              margin: const EdgeInsetsDirectional.only(bottom: 50),
-              child: SizedBox(
-                height: 350,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: videos.map((e) => Text(e.name)).toList(),
-                ),
-              ),
-            ),
+        data: (videos) => _VideosList(videos: videos),
         error: (_, __) =>
             const Center(child: Text('No se pudo cargar películas similares')),
         loading: () => const Center(
               child: CircularProgressIndicator(strokeWidth: 2),
             ));
+  }
+}
+
+class _VideosList extends StatelessWidget {
+  final List<Video> videos;
+  const _VideosList({
+    required this.videos,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    //* Nada que mostrar
+    if (videos.isEmpty) {
+      return const SizedBox();
+    }
+
+    return Container(
+      margin: const EdgeInsetsDirectional.only(bottom: 50),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // ignore: prefer_const_constructors
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: const Text(
+              'Videos',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+          ...videos
+              .map((video) => _YoutubeVideoPlayer(
+                  youtubeId: videos.first.youtubeKey, name: video.name))
+              .toList()
+        ],
+      ),
+    );
+  }
+}
+
+class _YoutubeVideoPlayer extends StatefulWidget {
+  final String youtubeId;
+  final String name;
+  const _YoutubeVideoPlayer({required this.youtubeId, required this.name});
+
+  @override
+  State<_YoutubeVideoPlayer> createState() => _YoutubeVideoPlayerState();
+}
+
+class _YoutubeVideoPlayerState extends State<_YoutubeVideoPlayer> {
+  late YoutubePlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = YoutubePlayerController(
+        initialVideoId: widget.youtubeId,
+        flags: const YoutubePlayerFlags(
+            mute: false,
+            autoPlay: false,
+            disableDragSeek: false,
+            loop: false,
+            isLive: false,
+            forceHD: false,
+            enableCaption: false));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: YoutubePlayerBuilder(
+        player: YoutubePlayer(controller: _controller),
+        builder: (context, player) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Text(widget.name), player, const SizedBox(height: 20)],
+          );
+        },
+      ),
+    );
   }
 }
