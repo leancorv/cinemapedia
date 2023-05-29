@@ -92,7 +92,7 @@ class MoviedbDatasource extends MoviesDatasource {
     final videos = <Video>[];
 
     for (final movidedbVideo in moviedbVideosResponse.results) {
-      if (movidedbVideo.site == 'Youtube') {
+      if (movidedbVideo.site == 'YouTube') {
         final video = VideoMapper.moviedbVideoToEntity(movidedbVideo);
         videos.add(video);
       }
