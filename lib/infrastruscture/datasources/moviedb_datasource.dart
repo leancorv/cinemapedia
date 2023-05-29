@@ -1,11 +1,10 @@
+import 'package:cinemapedia/domain/entities/entities.dart';
+import 'package:cinemapedia/infrastruscture/mappers/mappers.dart';
 import 'package:cinemapedia/infrastruscture/models/models.dart';
 import 'package:dio/dio.dart';
 
 import 'package:cinemapedia/config/constants/environment.dart';
 import 'package:cinemapedia/domain/datasources/movies_datasource.dart';
-
-import 'package:cinemapedia/infrastruscture/mappers/movie_mapper.dart';
-import 'package:cinemapedia/domain/entities/movie.dart';
 
 class MoviedbDatasource extends MoviesDatasource {
   final dio = Dio(BaseOptions(
@@ -87,16 +86,17 @@ class MoviedbDatasource extends MoviesDatasource {
   }
 
   @override
-  Future<List<String>> getYoutubeVideosById(int movieId) async {
+  Future<List<Video>> getYoutubeVideosById(int movieId) async {
     final response = await dio.get('/movie/$movieId/videos');
     final moviedbVideosResponse = MoviedbVideosResponse.fromJson(response.data);
-    final youtubeIds = <String>[];
+    final videos = <Video>[];
 
-    for (final video in moviedbVideosResponse.results) {
-      if (video.site == 'Youtube') {
-        youtubeIds.add(video.key);
+    for (final movidedbVideo in moviedbVideosResponse.results) {
+      if (movidedbVideo.site == 'Youtube') {
+        final video = VideoMapper.moviedbVideoToEntity(movidedbVideo);
+        videos.add(video);
       }
     }
-    return youtubeIds;
+    return videos;
   }
 }
