@@ -41,25 +41,24 @@ class _VideosList extends StatelessWidget {
       return const SizedBox();
     }
 
-    return Container(
-      margin: const EdgeInsetsDirectional.only(bottom: 50),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // ignore: prefer_const_constructors
-          Padding(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // ignore: prefer_const_constructors
+        Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: const Text(
-              'Videos',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
-          ...videos
-              .map((video) => _YoutubeVideoPlayer(
-                  youtubeId: videos.first.youtubeKey, name: video.name))
-              .toList()
-        ],
-      ),
+            child: const Text('Videos',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
+
+        //* Aunque tengo varios videos, sólo quiero mostrar el primero
+        _YoutubeVideoPlayer(
+            youtubeId: videos.first.youtubeKey, name: videos.first.name)
+
+        //* Si se desean mostrar todos los videos
+        //       ...videos.map((video) => _YoutubeVideoPlayer(
+        //               youtubeId: videos.first.youtubeKey, name: video.name))
+        //           .toList()
+      ],
     );
   }
 }
@@ -82,6 +81,7 @@ class _YoutubeVideoPlayerState extends State<_YoutubeVideoPlayer> {
     _controller = YoutubePlayerController(
         initialVideoId: widget.youtubeId,
         flags: const YoutubePlayerFlags(
+            showLiveFullscreenButton: false,
             mute: false,
             autoPlay: false,
             disableDragSeek: false,
@@ -100,17 +100,10 @@ class _YoutubeVideoPlayerState extends State<_YoutubeVideoPlayer> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: YoutubePlayerBuilder(
-        player: YoutubePlayer(controller: _controller),
-        builder: (context, player) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Text(widget.name), player, const SizedBox(height: 20)],
-          );
-        },
-      ),
-    );
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [Text(widget.name), YoutubePlayer(controller: _controller)],
+        ));
   }
 }
