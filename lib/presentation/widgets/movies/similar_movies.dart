@@ -19,7 +19,7 @@ class SimilarMovies extends ConsumerWidget {
         data: (movies) => Container(
               margin: const EdgeInsetsDirectional.only(bottom: 50),
               child: MovieHorizontalListview(
-                  title: 'Películas similares', movies: movies),
+                  title: 'Recomendaciones', movies: movies),
             ),
         error: (_, __) =>
             const Center(child: Text('No se pudo cargar películas similares')),
