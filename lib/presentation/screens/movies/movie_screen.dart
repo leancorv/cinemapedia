@@ -63,11 +63,16 @@ class _MovieDetails extends StatelessWidget {
       children: [
         _TitleAndOverview(movie: movie, size: size, textStyles: textStyles),
 
-        // Géneros de la película
+        //* Géneros de la película
         _Genres(movie: movie),
 
+        //* Actores de la película
         ActorsByMovie(movieId: movie.id.toString()),
 
+        //* Videos de la películas (si tiene)
+        VideosFromMovie(movieId: movie.id),
+
+        //* Películas similares
         SimilarMovies(movieId: movie.id),
       ],
     );
@@ -139,17 +144,22 @@ class _Genres extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8),
-      child: Wrap(
-        children: [
-          ...movie.genreIds.map((gender) => Container(
-                margin: const EdgeInsets.only(right: 10),
-                child: Chip(
-                  label: Text(gender),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                ),
-              ))
-        ],
+      child: SizedBox(
+        width: double.infinity,
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          alignment: WrapAlignment.center,
+          children: [
+            ...movie.genreIds.map((gender) => Container(
+                  margin: const EdgeInsets.only(right: 10),
+                  child: Chip(
+                    label: Text(gender),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                ))
+          ],
+        ),
       ),
     );
   }
