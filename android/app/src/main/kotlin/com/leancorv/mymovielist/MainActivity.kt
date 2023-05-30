@@ -1,4 +1,4 @@
-package com.example.cinemapedia
+package com.leancorv.mymovielist
 
 import io.flutter.embedding.android.FlutterActivity
 

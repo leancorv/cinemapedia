@@ -1,8 +1,8 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:cinemapedia/config/helpers/human_formats.dart';
-import 'package:cinemapedia/domain/entities/movie.dart';
-import 'package:cinemapedia/presentation/providers/providers.dart';
-import 'package:cinemapedia/presentation/widgets/widgets.dart';
+import 'package:mymovielist/config/helpers/human_formats.dart';
+import 'package:mymovielist/domain/entities/movie.dart';
+import 'package:mymovielist/presentation/providers/providers.dart';
+import 'package:mymovielist/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

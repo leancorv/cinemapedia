@@ -1,4 +1,4 @@
-import 'package:cinemapedia/domain/entities/entities.dart';
+import 'package:mymovielist/domain/entities/entities.dart';
 
 abstract class MoviesRepository {
   Future<List<Movie>> getNowPlaying({int page = 1});

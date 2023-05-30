@@ -1,6 +1,6 @@
-import 'package:cinemapedia/domain/entities/movie.dart';
-import 'package:cinemapedia/presentation/delegates/search_movie_delegate.dart';
-import 'package:cinemapedia/presentation/providers/providers.dart';
+import 'package:mymovielist/domain/entities/movie.dart';
+import 'package:mymovielist/presentation/delegates/search_movie_delegate.dart';
+import 'package:mymovielist/presentation/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -28,7 +28,7 @@ class CustomAppbar extends ConsumerWidget {
                     width: 5,
                   ),
                   Text(
-                    'Cinemapedia',
+                    'mymovielist',
                     style: titleStyle,
                   ),
                   const Spacer(),

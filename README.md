@@ -1,4 +1,4 @@
-# cinemapedia
+# mymovielist
 
 # Dev
 
@@ -7,4 +7,9 @@
 3. Cambios en la entidad, hay que ejecutar el comando
 ```
 flutter pub run build_runner build
+``` 
+
+# Prod
+```
+flutter pub run change_app_package_name:main com.leancorv.mymovielist
 ``` 

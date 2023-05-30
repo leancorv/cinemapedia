@@ -1,5 +1,5 @@
-import 'package:cinemapedia/presentation/views/views.dart';
-import 'package:cinemapedia/presentation/widgets/widgets.dart';
+import 'package:mymovielist/presentation/views/views.dart';
+import 'package:mymovielist/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
