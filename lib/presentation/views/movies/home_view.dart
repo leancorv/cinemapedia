@@ -62,14 +62,15 @@ class HomeViewState extends ConsumerState<HomeView> {
                   ref.read(upcomingMoviesProvider.notifier).loadNextPage();
                 },
               ),
-              MovieHorizontalListview(
-                movies: popularMovies,
-                title: 'Populares',
-                // subtitle: '',
-                loadNextPage: () {
-                  ref.read(popularMoviesProvider.notifier).loadNextPage();
-                },
-              ),
+              //* Ya no estará acá, ahora es parte del menú inferior
+              // MovieHorizontalListview(
+              //   movies: popularMovies,
+              //   title: 'Populares',
+              //   // subtitle: '',
+              //   loadNextPage: () {
+              //     ref.read(popularMoviesProvider.notifier).loadNextPage();
+              //   },
+              // ),
               MovieHorizontalListview(
                 movies: topRatedMovies,
                 title: 'Mejor calificadas',
