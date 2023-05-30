@@ -20,6 +20,7 @@ class MoviePosterLink extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: FadeInImage(
+            height: 180,
             fit: BoxFit.cover,
             placeholder: const AssetImage('assets/loaders/mix-logo.png'),
             image: NetworkImage(movie.posterPath),
