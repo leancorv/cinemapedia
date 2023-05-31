@@ -19,6 +19,7 @@ class HomeViewState extends ConsumerState<HomeView>
     ref.read(popularMoviesProvider.notifier).loadNextPage();
     ref.read(topRatedMoviesProvider.notifier).loadNextPage();
     ref.read(upcomingMoviesProvider.notifier).loadNextPage();
+    ref.read(trendingTodayMoviesProvider.notifier).loadNextPage();
   }
 
   @override
@@ -32,6 +33,7 @@ class HomeViewState extends ConsumerState<HomeView>
     // final popularMovies = ref.watch(popularMoviesProvider);
     final topRatedMovies = ref.watch(topRatedMoviesProvider);
     final upcomingMovies = ref.watch(upcomingMoviesProvider);
+    final trendingTodayMovies = ref.watch(trendingTodayMoviesProvider);
 
     return CustomScrollView(
       slivers: [
@@ -49,19 +51,19 @@ class HomeViewState extends ConsumerState<HomeView>
               // const CustomAppbar(),
               MoviesSlideshow(movies: slideShowMovies),
               MovieHorizontalListview(
+                movies: trendingTodayMovies,
+                title: 'Tendencias',
+                subtitle: 'Hoy',
+                loadNextPage: () {
+                  ref.read(trendingTodayMoviesProvider.notifier).loadNextPage();
+                },
+              ),
+              MovieHorizontalListview(
                 movies: nowPlayingMovies,
                 title: 'En cines',
                 subtitle: 'Lunes 20',
                 loadNextPage: () {
                   ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
-                },
-              ),
-              MovieHorizontalListview(
-                movies: upcomingMovies,
-                title: 'Proximamente',
-                subtitle: 'En este mes',
-                loadNextPage: () {
-                  ref.read(upcomingMoviesProvider.notifier).loadNextPage();
                 },
               ),
               //* Ya no estará acá, ahora es parte del menú inferior
@@ -79,6 +81,14 @@ class HomeViewState extends ConsumerState<HomeView>
                 subtitle: 'Desde siempre',
                 loadNextPage: () {
                   ref.read(topRatedMoviesProvider.notifier).loadNextPage();
+                },
+              ),
+              MovieHorizontalListview(
+                movies: upcomingMovies,
+                title: 'Proximamente',
+                subtitle: 'En este mes',
+                loadNextPage: () {
+                  ref.read(upcomingMoviesProvider.notifier).loadNextPage();
                 },
               ),
               const SizedBox(height: 10),

@@ -99,4 +99,12 @@ class MoviedbDatasource extends MoviesDatasource {
     }
     return videos;
   }
+
+  @override
+  Future<List<Movie>> getTrendingToday({int page = 1}) async {
+    final response =
+        await dio.get('/trending/movie/day', queryParameters: {'page': page});
+
+    return _jsonToMovies(response.data);
+  }
 }
