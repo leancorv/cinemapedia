@@ -10,25 +10,26 @@ class CustomAppbar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors = Theme.of(context).colorScheme;
+    // final colors = Theme.of(context).colorScheme;
     final titleStyle = Theme.of(context).textTheme.titleMedium;
     return SafeArea(
         bottom: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.only(left: 8, right: 2),
           child: SizedBox(
               width: double.infinity,
               child: Row(
                 children: [
-                  Icon(
-                    Icons.movie_outlined,
-                    color: colors.primary,
-                  ),
+                  const ImageIcon(AssetImage('assets/icon/mix-logo-4.png')),
+                  // Icon(
+                  //   Icons.movie_outlined,
+                  //   color: colors.primary,
+                  // ),
                   const SizedBox(
                     width: 5,
                   ),
                   Text(
-                    'mymovielist',
+                    'MyMy',
                     style: titleStyle,
                   ),
                   const Spacer(),

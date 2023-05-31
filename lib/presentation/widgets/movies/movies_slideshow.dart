@@ -11,7 +11,7 @@ class MoviesSlideshow extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     return SizedBox(
-      height: 210,
+      height: 510,
       width: double.infinity,
       child: Swiper(
         viewportFraction: 0.8,
@@ -20,7 +20,8 @@ class MoviesSlideshow extends StatelessWidget {
         pagination: SwiperPagination(
             margin: const EdgeInsets.only(top: 0),
             builder: DotSwiperPaginationBuilder(
-                activeColor: colors.primary, color: colors.secondary)),
+                activeColor: colors.primary,
+                color: colors.secondary.withOpacity(0.3))),
         itemCount: movies.length,
         itemBuilder: (context, index) => _Slide(movie: movies[index]),
       ),
@@ -37,7 +38,12 @@ class _Slide extends StatelessWidget {
     final decoration = BoxDecoration(
       borderRadius: BorderRadius.circular(20),
       boxShadow: const [
-        BoxShadow(color: Colors.black45, blurRadius: 10, offset: Offset(0, 10)),
+        BoxShadow(
+          color: Color.fromARGB(53, 0, 0, 0),
+          blurRadius: 10,
+          offset: Offset(0, 10),
+          // spreadRadius: 0.9,
+        ),
       ],
     );
     return Padding(
@@ -51,7 +57,7 @@ class _Slide extends StatelessWidget {
                 child: FadeInImage(
                   fit: BoxFit.cover,
                   placeholder: const AssetImage('assets/loaders/mix-logo.png'),
-                  image: NetworkImage(movie.backdropPath),
+                  image: NetworkImage(movie.posterPath),
                 ),
               ))),
     );
