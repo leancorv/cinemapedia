@@ -29,7 +29,7 @@ class CustomAppbar extends ConsumerWidget {
                     width: 5,
                   ),
                   Text(
-                    'MyMy',
+                    'MyMovieList',
                     style: titleStyle,
                   ),
                   const Spacer(),
