@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:mymovielist/presentation/providers/providers.dart';
 import 'package:mymovielist/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,10 @@ class HomeViewState extends ConsumerState<HomeView>
     return CustomScrollView(
       slivers: [
         const SliverAppBar(
+          systemOverlayStyle: SystemUiOverlayStyle(
+              systemNavigationBarColor: Color(0xFF191919),
+              // systemNavigationBarDividerColor: Colors.transparent,
+              systemNavigationBarIconBrightness: Brightness.dark),
           floating: true,
           flexibleSpace: FlexibleSpaceBar(
             centerTitle: true,
