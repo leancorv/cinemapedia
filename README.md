@@ -1,4 +1,5 @@
-# cinemapedia
+# mymovies
+[![My-Movies-App.png](https://i.postimg.cc/mDZQ9F98/My-Movies-App.png)](https://postimg.cc/8F3JQct6)
 
 # Dev
 
@@ -7,4 +8,20 @@
 3. Cambios en la entidad, hay que ejecutar el comando
 ```
 flutter pub run build_runner build
+``` 
+
+# Prod
+Para cambiar el nombre de la aplicación:
+```
+flutter pub run change_app_package_name:main com.leancorv.mymovies
+``` 
+
+Para cambiar el splash screen de la aplicación:
+```
+flutter pub run flutter_native_splash:create
+```
+
+Para cambiar el icono de la aplicación:
+```
+flutter pub run flutter_launcher_icons
 ``` 

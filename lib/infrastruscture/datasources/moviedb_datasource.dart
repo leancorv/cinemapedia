@@ -1,10 +1,10 @@
-import 'package:cinemapedia/domain/entities/entities.dart';
-import 'package:cinemapedia/infrastruscture/mappers/mappers.dart';
-import 'package:cinemapedia/infrastruscture/models/models.dart';
+import 'package:mymovies/domain/entities/entities.dart';
+import 'package:mymovies/infrastruscture/mappers/mappers.dart';
+import 'package:mymovies/infrastruscture/models/models.dart';
 import 'package:dio/dio.dart';
 
-import 'package:cinemapedia/config/constants/environment.dart';
-import 'package:cinemapedia/domain/datasources/movies_datasource.dart';
+import 'package:mymovies/config/constants/environment.dart';
+import 'package:mymovies/domain/datasources/movies_datasource.dart';
 
 class MoviedbDatasource extends MoviesDatasource {
   final dio = Dio(BaseOptions(
@@ -98,5 +98,13 @@ class MoviedbDatasource extends MoviesDatasource {
       }
     }
     return videos;
+  }
+
+  @override
+  Future<List<Movie>> getTrendingToday({int page = 1}) async {
+    final response =
+        await dio.get('/trending/movie/day', queryParameters: {'page': page});
+
+    return _jsonToMovies(response.data);
   }
 }

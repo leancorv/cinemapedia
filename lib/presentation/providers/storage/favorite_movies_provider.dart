@@ -1,6 +1,6 @@
-import 'package:cinemapedia/domain/entities/movie.dart';
-import 'package:cinemapedia/domain/repositories/local_storage_repository.dart';
-import 'package:cinemapedia/presentation/providers/providers.dart';
+import 'package:mymovies/domain/entities/movie.dart';
+import 'package:mymovies/domain/repositories/local_storage_repository.dart';
+import 'package:mymovies/presentation/providers/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final favoriteMoviesProvider =

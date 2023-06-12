@@ -1,6 +1,6 @@
-import 'package:cinemapedia/domain/datasources/movies_datasource.dart';
-import 'package:cinemapedia/domain/entities/entities.dart';
-import 'package:cinemapedia/domain/repositories/movies_repository.dart';
+import 'package:mymovies/domain/datasources/movies_datasource.dart';
+import 'package:mymovies/domain/entities/entities.dart';
+import 'package:mymovies/domain/repositories/movies_repository.dart';
 
 class MovieRepositoryImpl extends MoviesRepository {
   final MoviesDatasource datasource;
@@ -44,5 +44,10 @@ class MovieRepositoryImpl extends MoviesRepository {
   @override
   Future<List<Video>> getYoutubeVideosById(int movieId) {
     return datasource.getYoutubeVideosById(movieId);
+  }
+
+  @override
+  Future<List<Movie>> getTrendingToday({int page = 1}) {
+    return datasource.getTrendingToday(page: page);
   }
 }

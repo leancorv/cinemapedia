@@ -1,8 +1,8 @@
-import 'package:cinemapedia/config/constants/environment.dart';
-import 'package:cinemapedia/domain/datasources/actors_datasource.dart';
-import 'package:cinemapedia/domain/entities/actor.dart';
-import 'package:cinemapedia/infrastruscture/mappers/actor_mapper.dart';
-import 'package:cinemapedia/infrastruscture/models/moviedb/credits_response.dart';
+import 'package:mymovies/config/constants/environment.dart';
+import 'package:mymovies/domain/datasources/actors_datasource.dart';
+import 'package:mymovies/domain/entities/actor.dart';
+import 'package:mymovies/infrastruscture/mappers/actor_mapper.dart';
+import 'package:mymovies/infrastruscture/models/moviedb/credits_response.dart';
 import 'package:dio/dio.dart';
 
 class ActorMovieDbDatasource extends ActorsDatasource {
