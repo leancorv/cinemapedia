@@ -1,6 +1,6 @@
-import 'package:mymovielist/domain/datasources/local_storage_datasource.dart';
-import 'package:mymovielist/domain/entities/movie.dart';
-import 'package:mymovielist/domain/repositories/local_storage_repository.dart';
+import 'package:mymovies/domain/datasources/local_storage_datasource.dart';
+import 'package:mymovies/domain/entities/movie.dart';
+import 'package:mymovies/domain/repositories/local_storage_repository.dart';
 
 class LocalStorageRepositoryImpl extends LocalStorageRepository {
   final LocalStorageDatasource datasource;

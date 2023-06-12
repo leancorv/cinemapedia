@@ -1,4 +1,4 @@
-# mymovielist
+# mymovies
 
 # Dev
 
@@ -12,7 +12,7 @@ flutter pub run build_runner build
 # Prod
 Para cambiar el nombre de la aplicación:
 ```
-flutter pub run change_app_package_name:main com.leancorv.mymovielist
+flutter pub run change_app_package_name:main com.leancorv.mymovies
 ``` 
 
 Para cambiar el splash screen de la aplicación:

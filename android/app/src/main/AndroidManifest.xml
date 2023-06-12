@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.leancorv.mymovielist">
+    package="com.leancorv.mymovies">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="mymovielist"
+        android:label="mymovies"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

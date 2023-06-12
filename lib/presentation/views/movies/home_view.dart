@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:mymovielist/presentation/providers/providers.dart';
-import 'package:mymovielist/presentation/widgets/widgets.dart';
+import 'package:mymovies/presentation/providers/providers.dart';
+import 'package:mymovies/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

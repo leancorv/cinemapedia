@@ -1,6 +1,6 @@
-import 'package:mymovielist/domain/entities/movie.dart';
-import 'package:mymovielist/presentation/delegates/search_movie_delegate.dart';
-import 'package:mymovielist/presentation/providers/providers.dart';
+import 'package:mymovies/domain/entities/movie.dart';
+import 'package:mymovies/presentation/delegates/search_movie_delegate.dart';
+import 'package:mymovies/presentation/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -29,7 +29,7 @@ class CustomAppbar extends ConsumerWidget {
                     width: 5,
                   ),
                   Text(
-                    'MyMovieList',
+                    'MyMovies',
                     style: titleStyle,
                   ),
                   const Spacer(),

@@ -1,5 +1,5 @@
-import 'package:mymovielist/presentation/providers/providers.dart';
-import 'package:mymovielist/presentation/widgets/movies/movie_masonry.dart';
+import 'package:mymovies/presentation/providers/providers.dart';
+import 'package:mymovies/presentation/widgets/movies/movie_masonry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

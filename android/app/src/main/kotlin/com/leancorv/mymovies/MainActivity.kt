@@ -1,4 +1,4 @@
-package com.leancorv.mymovielist
+package com.leancorv.mymovies
 
 import io.flutter.embedding.android.FlutterActivity
 

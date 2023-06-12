@@ -1,5 +1,5 @@
-import 'package:mymovielist/domain/entities/movie.dart';
-import 'package:mymovielist/presentation/widgets/widgets.dart';
+import 'package:mymovies/domain/entities/movie.dart';
+import 'package:mymovies/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
